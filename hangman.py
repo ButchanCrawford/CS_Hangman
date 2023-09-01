@@ -6,13 +6,16 @@ def choose_word():
     return selected_word.upper()
 
 def play(word):
-    blank_spaces = " _ " * len(word)
+    blank_spaces = "_" * len(word)
     guessed  = False
     guessed_letters = []
     guessed_words = []
     tries = 6 
+    print("||||||||||||||||||||||||||||||")
     print("||  Welcome To CS Hanggman! ||")
     print("|| Computer Science Hangman ||")
+    print("||||||||||||||||||||||||||||||")
+
     print(display_hangman(tries))
     print(blank_spaces)
     print("\n")
@@ -29,24 +32,24 @@ def play(word):
                 print(f" Correct, '{guess}' is in the selected word")
                 guessed_letters.append(guess)
                 word_list = list(blank_spaces)
-                indices = [ i for i, letter in enumerate(word) if letter == guess]
+                indices = [i for i, letter in enumerate(word) if letter == guess]
                 for index in indices:
                     word_list[index] = guess
                 blank_spaces = "".join(word_list)
-                if " _ " not in blank_spaces:
+                if "_" not in blank_spaces:
                     guessed = True
                     
         elif len(guess) == len(word) and guess.isalpha():
             if guess in guessed_words:
                 print(f"'{guess}' has already been guessed. ")
             elif guess != word:
-                print (guess, "is not the word")
+                print(guess, "is not the word")
                 tries -= 1
                 guessed_words.append(guess)
             else:
                 guessed = True
                 blank_spaces = word
-                print("correct guess: ", word)
+              
 
         else:
             print("Not a valid guess.")
@@ -58,16 +61,6 @@ def play(word):
         print("Congrats, you won")
     else: 
         print(f"Sorry, you lost. The correct word was '{word}' ")
-
-
-
-
-
-
-
-
-
-
 
 
 def display_hangman(tries):
@@ -152,5 +145,5 @@ def main():
         word = choose_word()
         play(word)
 
-    if __name__ == "__main__":
-        main()
+if __name__ == "__main__":
+     main()
